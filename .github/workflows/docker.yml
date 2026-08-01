@@ -29,3 +29,9 @@ jobs:
       - name: Subir la imagen
         run: |
           docker push marielyy/hola-mundo:latest
+
+      - name: Deploy en Render
+        run: |
+          curl -X POST \
+          https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
